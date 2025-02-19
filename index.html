@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-y-hidden overflow-x-hidden flex flex-col h-screen">
+    <header class="bg-black text-white">
+            <!-- Logo -->
+            <p href="#" class="text-2xl font-bold mx-auto flex justify-center items-center p-4">Piedra Papel O Tijeras</p>
+    
+
+        </nav>
+    </header>
+    <main class="relative flex flex-col items-center justify-center flex-grow bg-cover bg-center">
+        <!-- Capa con opacidad para la imagen de fondo -->
+        <div class="absolute inset-0 bg-[url('static/bar.avif')] bg-cover bg-center brightness-50"></div>
+        <button id="iniciarJuego" class="cursor-pointer bg-green-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-green-600 active:bg-green-700 transition brightness-100">
+            Iniciar Juego
+        </button>
+        
+        
+        
+        <div id="juego" class="hidden flex flex-col items-center justify-center gap-4 mt-8 w-full">
+            <div class="flex w-full justify-center overflow-hidden">
+                <img src="static/mano-removebg-preview (1).png" alt="" class="transform scale-y-[-1] -rotate-100 max-w-[150px] md:max-w-[400px] sm:max-w-[300px] w-full h-auto object-contain transition-all duration-300">
+                <img src="static/mano-removebg-preview (1).png" class="-rotate-80 max-w-[150px] md:max-w-[400px] sm:max-w-[300px] w-full h-auto object-contain transition-all duration-300" alt="">
+            </div>
+            <div class="flex justify-around overflow-hidden gap-8 flex-col md:flex-row w-full">
+            <div class="flex gap-4 brightness-100 flex-col items-center">
+                <p class="text-2xl font-semibold text-white brightness-100">Elige una opción Jugador</p>
+                <div class="flex gap-4 brightness-100">
+                    <button id="piedraUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
+                        Piedra
+                    </button>
+                    <button id="papelUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
+                        Papel
+                    </button>
+                    <button id="tijerasUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
+                        Tijeras
+                    </button>
+                </div>
+            </div>
+            <div class="flex gap-4 brightness-100 flex-col items-center">
+                <p class="text-2xl font-semibold text-white brightness-100">Elección de la máquina</p>
+                <div class="flex gap-4 brightness-100">
+                    <div class="ruleta-container">
+                        <div class="ruleta" id="ruleta">
+                            <div class="section piedra">Piedra</div>
+                            <div class="section papel">Papel</div>
+                            <div class="section tijeras">Tijeras</div>
+                        </div>
+                        <div class="flecha"></div>
+                    </div>
+            </div>
+            </div>
+            </div>
+            <p id="resultado" class="text-2xl font-semibold mt-8 hidden">Resultado</p>
+            <button id="reiniciar" class="cursor-pointer bg-red-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-red-600 active:bg-red-700 transition mt-8 hidden">
+                Reiniciar
+            </button>
+        </div>
+    </main>
+    
+
+
+      <script src="script.js"></script>
+</body>
+</html>

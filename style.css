@@ -1,0 +1,78 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+/* #juego{
+    display: none;
+} */
+
+.ruleta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ruleta {
+    shape-outside: circle();
+    clip-path: circle();
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: conic-gradient(
+        #9e9e9e 0% 33.33%,    /* Piedra */
+        #4caf50 33.33% 66.66%, /* Papel */
+        #f44336 66.66% 100%    /* Tijeras */
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 5px dashed black;
+}
+
+.section {
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.piedra {
+    transform: rotate(0deg);
+    translate: 0px 40px;
+    
+}
+
+.papel {
+    transform: rotate(120deg);
+    translate: -30px -20px;
+}
+
+.tijeras {
+    transform: rotate(240deg);
+    translate: 30px -20px;
+}
+
+.ruleta .section p {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+.flecha {
+    position: absolute;
+    top: 0px;  /* La flecha estará justo arriba del borde de la ruleta */
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg); /* Flecha apuntando hacia la sección de Piedra */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid black;
+    transform: rotate(20deg);
+}
+
