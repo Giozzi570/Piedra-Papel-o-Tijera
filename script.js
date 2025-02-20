@@ -127,7 +127,7 @@ document.getElementById("menu-btn").addEventListener("click", () => {
 });
 
 document.getElementById("reiniciar").addEventListener("click", () => {
-    iniciarJuego.style.display = "flex"
+    iniciarJuego.style.display = "block"
     juego.style.display = "none"
     juegoCompleto()
 });
@@ -140,4 +140,5 @@ document.getElementById('reiniciar').addEventListener('click', function(){
     document.getElementById("winMessage").classList.add("hidden")
     document.getElementById('reiniciar').classList.add("hidden")
     valueUser.style.display = "flex"
+    document.getElementById("bar").style.display = "block"
 })
