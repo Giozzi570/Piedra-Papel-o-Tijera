@@ -28,7 +28,7 @@ const juegoCompleto = () => {
         maquina = elegirAleatorio(opciones);
         numeroAleatorio()
         user = "piedra"
-        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        verificarImagenUser(),eliminateElementValueUser(),verificarImagenMaquina(),verificarPuntaje()
         document.getElementById("reiniciar").classList.toggle("hidden");
     })
     papel.addEventListener("click", () => {
@@ -36,7 +36,7 @@ const juegoCompleto = () => {
         maquina = elegirAleatorio(opciones);
         numeroAleatorio()
         user = "papel"
-        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        verificarImagenUser(),eliminateElementValueUser(),verificarImagenMaquina(),verificarPuntaje()
         document.getElementById("reiniciar").classList.toggle("hidden");
     })
     tijeras.addEventListener("click", () => {
@@ -44,7 +44,7 @@ const juegoCompleto = () => {
         maquina = elegirAleatorio(opciones);
         numeroAleatorio()
         user = "tijeras"
-        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        verificarImagenUser(),eliminateElementValueUser(),verificarImagenMaquina(),verificarPuntaje()
         document.getElementById("reiniciar").classList.remove("hidden");
     })
 }
@@ -52,6 +52,7 @@ iniciarJuego.addEventListener("click", () => {
     iniciarJuego.style.display = "none"
     juego.style.display = "flex"
     juegoCompleto()
+    document.getElementById("bar").style.display = "none"
 })
 const eliminateElementValueUser = () =>{
     valueUser.style.display = "none"
@@ -86,29 +87,39 @@ const verificarImagenMaquina = () => {
 
 }
 const verificarPuntaje = () => {
-    if (maquina == user){
-        document.getElementById("tieMessage").classList.toggle("hidden")
+    // Primero, ocultamos los mensajes antes de que se muestre uno nuevo
+    document.getElementById("tieMessage").classList.add("hidden");
+    document.getElementById("loseMessage").classList.add("hidden");
+    document.getElementById("winMessage").classList.add("hidden");
+
+    // Comparamos los resultados de la máquina y el jugador
+    if (maquina === user) {
+        // Empate
+        document.getElementById("tieMessage").classList.remove("hidden");
+        console.log("Empate");
+    } else {
+        // El jugador pierde
+        if (
+            (maquina === "piedra" && user === "tijeras") ||
+            (maquina === "papel" && user === "piedra") ||
+            (maquina === "tijeras" && user === "papel")
+        ) {
+            document.getElementById("loseMessage").classList.remove("hidden");
+            console.log("Pierde");
+        }
+        // El jugador gana
+        else if (
+            (maquina === "piedra" && user === "papel") ||
+            (maquina === "papel" && user === "tijeras") ||
+            (maquina === "tijeras" && user === "piedra")
+        ) {
+            document.getElementById("winMessage").classList.remove("hidden");
+            console.log("Gana");
+        }
     }
-    else{
-        if(maquina == "piedra" & user == "tijeras"){
-            document.getElementById("loseMessage").classList.toggle("hidden")
-        }
-        else if(maquina == "papel" & user == "piedra"){
-            document.getElementById("loseMessage").classList.toggle("hidden")
-        }
-        else if(maquina == "tijeras" & user == "papel"){
-            document.getElementById("loseMessage").classList.toggle("hidden")
-        }
-        else if(maquina == "piedra" & user == "papel"){
-            document.getElementById("winMessage").classList.toggle("hidden")
-        }
-        else if(maquina == "papel" & user == "tijeras"){
-            document.getElementById("winMessage").classList.toggle("hidden")
-        }
-        else if(maquina == "tijeras" & user == "piedra"){
-            document.getElementById("winMessage").classList.toggle("hidden")
-        }
-    }
+
+    console.log("Maquina:", maquina);
+    console.log("Usuario:", user);
 }
 
 document.getElementById("menu-btn").addEventListener("click", () => {

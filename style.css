@@ -161,4 +161,45 @@ body{
 }
 
 
+#iniciarJuego {
+            display: inline-block;
+            padding: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #FFA500; /* Color naranja, como la cerveza */
+            border: 2px solid #8B4513; /* Borde marrón, como un barril */
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Efecto al pasar el ratón */
+        .iniciarJuego:hover {
+            background-color: #FF8C00; /* Naranja más oscuro */
+            transform: scale(1.05); /* Efecto de agrandar */
+        }
+
+        /* Efecto al hacer clic */
+        .iniciarJuego:active {
+            transform: scale(1);
+        }
+
+        /* Estilo para la barra */
+        .bar {
+            background-color: #333; /* Fondo oscuro como un bar */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Texto dentro del botón */
+        #iniciarJuego::before {
+            content: "🍺"; /* Emoji de cerveza */
+            margin-right: 10px;
+        }
 

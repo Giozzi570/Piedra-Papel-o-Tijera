@@ -39,17 +39,17 @@
     
             <!-- Menú de Navegación -->
             <nav id="nav-menu" class="hidden lg:flex gap-6 text-lg font-semibold transition-all">
-                <a href="#" class="menu-link">Inicio</a>
-                <a href="#" class="menu-link">Reglas</a>
-                <a href="#" class="menu-link">Contacto</a>
+                <a href="#" class="menu-link animate__jackInTheBox animate__animated">Inicio</a>
+                <a href="#" class="menu-link animate__jackInTheBox animate__animated">Reglas</a>
+                <a href="#" class="menu-link animate__jackInTheBox animate__animated">Contacto</a>
             </nav>
         </div>
     
         <!-- Menú desplegable en móviles -->
         <div id="mobile-menu" class="hidden flex-col flex bg-black/90 p-4 gap-4 text-center">
-            <a href="#" class="menu-link">Inicio</a>
-            <a href="#" class="menu-link">Reglas</a>
-            <a href="#" class="menu-link">Contacto</a>
+            <a href="#" class="menu-link animate__jackInTheBox animate__animated">Inicio</a>
+            <a href="#" class="menu-link animate__jackInTheBox animate__animated">Reglas</a>
+            <a href="#" class="menu-link animate__jackInTheBox animate__animated">Contacto</a>
         </div>
     </header>
     
@@ -58,9 +58,10 @@
     <main class="relative flex flex-col items-center justify-center flex-grow bg-cover bg-center">
         <!-- Capa con opacidad para la imagen de fondo -->
         <div class="absolute inset-0 bg-[url('static/bar.avif')] bg-cover bg-center brightness-50"></div>
-        <button id="iniciarJuego" class="cursor-pointer bg-green-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-green-600 active:bg-green-700 transition brightness-100">
-            Iniciar Juego
-        </button>
+        <div class="bar" id="bar">
+            <button id="iniciarJuego" class="beer-button brightness-100 text-white">Iniciar Juego</button>
+        </div>
+        
         
         
         
@@ -119,8 +120,8 @@
         }
     </style>
 
-            <p id="resultado" class="text-2xl font-semibold mt-8"></p>
-            <button id="reiniciar" class="cursor-pointer bg-red-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-red-600 active:bg-red-700 transition mt-8 hidden">
+            <p id="resultado" class="text-2xl font-semibold mt-8">Puntaje</p>
+            <button id="reiniciar" class="cursor-pointer bg-red-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-red-600 active:bg-red-700 transition mt-8 hidden m-5">
                 Reiniciar
             </button>
         </div>
