@@ -11,6 +11,7 @@ const maquinaValue = document.getElementById("maquinaValue")
 let user;
 let maquina;
 let arrayButtons = [papel,tijeras,piedra]
+const opciones = ["Piedra", "Papel", "Tijeras"];
 const numeroAleatorio = () =>{
     numero = Math.random() * 10000
     console.log(numero)
@@ -28,42 +29,34 @@ const eliminateElementValueUser = () =>{
     valueUser.style.display = "none"
 }
 piedra.addEventListener("click", () => {
-    const opciones = ["Piedra", "Papel", "Tijeras"];
+    const opciones = ["piedra", "papel", "tijeras"];
     maquina = elegirAleatorio(opciones);
     numeroAleatorio()
     user = "piedra"
-    verificarImagenUser()
-    eliminateElementValueUser()
-    setTimeout(verificarImagenMaquina(),2000)
+    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
 })
 papel.addEventListener("click", () => {
-    const opciones = ["Piedra", "Papel", "Tijeras"];
+    const opciones = ["piedra", "papel", "tijeras"];
     maquina = elegirAleatorio(opciones);
     numeroAleatorio()
     user = "papel"
-    verificarImagenUser()
-    eliminateElementValueUser()
-    setTimeout(verificarImagenMaquina(),2000)
+    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
 })
 tijeras.addEventListener("click", () => {
     const opciones = ["piedra", "papel", "tijeras"];
     maquina = elegirAleatorio(opciones);
     numeroAleatorio()
     user = "tijeras"
-    verificarImagenUser()
-    eliminateElementValueUser()
-    setTimeout(verificarImagenMaquina(),2000)
+    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
 })
 
 const verificarImagenUser = () => {
     switch (user){
         case "piedra":
             userValue.setAttribute("src","static/piedra.png")
-            console.log("piedra")
             break
         case "papel":
             userValue.setAttribute("src","static/papel.png")
-            console.log("papel")
             break
         case "tijeras":
             userValue.setAttribute("src","static/tijeras.png")
@@ -72,14 +65,13 @@ const verificarImagenUser = () => {
 
 }
 const verificarImagenMaquina = () => {
+    
     switch (maquina){
         case "piedra":
             maquinaValue.setAttribute("src","static/piedra.png")
-            console.log("piedra")
             break
         case "papel":
             maquinaValue.setAttribute("src","static/papel.png")
-            console.log("papel")
             break
         case "tijeras":
             maquinaValue.setAttribute("src","static/tijeras.png")
@@ -87,3 +79,32 @@ const verificarImagenMaquina = () => {
     }
 
 }
+const verificarPuntaje = () => {
+    if (maquina == user){
+        console.log("Empate")
+    }
+    else{
+        if(maquina == "piedra" & user == "tijeras"){
+            console.log("Gano la máquina")
+        }
+        else if(maquina == "papel" & user == "piedra"){
+            console.log("Gano la máquina")
+        }
+        else if(maquina == "tijeras" & user == "papel"){
+            console.log("Gano la máquina")
+        }
+        else if(maquina == "piedra" & user == "papel"){
+            console.log("Gano el usuario")
+        }
+        else if(maquina == "papel" & user == "tijeras"){
+            console.log("Gano el usuario")
+        }
+        else if(maquina == "tijeras" & user == "piedra"){
+            console.log("Gano el usuario")
+        }
+    }
+}
+
+document.getElementById("menu-btn").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+});

@@ -10,15 +10,51 @@
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 	  />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body class="overflow-y-hidden overflow-x-hidden flex flex-col h-screen">
-    <header class="bg-black text-white">
-            <!-- Logo -->
-            <p href="#" class="text-2xl font-bold mx-auto flex justify-center items-center p-4">Piedra Papel O Tijeras</p>
+    <header class="relative bg-black text-yellow-400 border-b-4 border-yellow-700 shadow-lg overflow-hidden w-full">
+        <!-- Fondo con textura de madera y luces de bar -->
+        <div class="absolute inset-0 bg-[url('static/bar-background.jpg')] bg-cover bg-center opacity-30"></div>
     
-
-        </nav>
+        <!-- Contenedor del humo -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="smoke"></div>
+        </div>
+    
+        <!-- Contenedor del header -->
+        <div class="relative flex items-center justify-between px-6 md:px-12 py-6 bg-black/80 backdrop-blur-md border-b-2 border-yellow-600 shadow-xl animate-fade-in">
+            
+            <!-- Logo con efecto neón -->
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide neon-text flex items-center gap-3">
+                <span class="elementsTitle">🍻</span> <span class="animate-flicker animate__slideInDown animate__animated">Piedra Papel Tijeras</span><span class="elementsTitle">✂️</span>
+            </h1>
+    
+            <!-- Menú hamburguesa en móviles -->
+            <button id="menu-btn" class="lg:hidden text-yellow-400 text-3xl cursor-pointer">
+                ☰
+            </button>
+    
+            <!-- Menú de Navegación -->
+            <nav id="nav-menu" class="hidden lg:flex gap-6 text-lg font-semibold transition-all">
+                <a href="#" class="menu-link">Inicio</a>
+                <a href="#" class="menu-link">Reglas</a>
+                <a href="#" class="menu-link">Contacto</a>
+            </nav>
+        </div>
+    
+        <!-- Menú desplegable en móviles -->
+        <div id="mobile-menu" class="hidden flex-col flex bg-black/90 p-4 gap-4 text-center">
+            <a href="#" class="menu-link">Inicio</a>
+            <a href="#" class="menu-link">Reglas</a>
+            <a href="#" class="menu-link">Contacto</a>
+        </div>
     </header>
+    
+    
+    
     <main class="relative flex flex-col items-center justify-center flex-grow bg-cover bg-center">
         <!-- Capa con opacidad para la imagen de fondo -->
         <div class="absolute inset-0 bg-[url('static/bar.avif')] bg-cover bg-center brightness-50"></div>
@@ -28,28 +64,33 @@
         
         
         
-        <div id="juego" class="hidden flex flex-col items-center justify-center gap-4 mt-8 w-full animate__fadeInDown animate__animated">
+        <div id="juego" class="hidden flex flex-col items-center justify-center  w-full animate__fadeInDown animate__animated h-screen bg-[url('static/bar-background.jpg')] border-4 border-yellow-700">
             <div class="flex w-full justify-center overflow-hidden">
                 <img  id="userValue" alt="" class="transform scale-y-[-1] -rotate-100 max-w-[150px] md:max-w-[400px] sm:max-w-[300px] w-full h-auto object-contain transition-all duration-300 animate__animated animate__backInRight animate__delay-1s">
                 <img id="maquinaValue" class="-rotate-80 max-w-[150px] md:max-w-[400px] sm:max-w-[300px] w-full h-auto object-contain transition-all duration-300 animate__animated animate__backInRight animate__delay-1s" alt="">
             </div>
-            <div class="flex justify-around overflow-hidden gap-8 flex-col md:flex-row w-full" >
-            <div class="flex gap-4 brightness-100 flex-col items-center" id="valueUser">
-                <p class="text-2xl font-semibold text-white brightness-100">Turno del Jugador</p>
-                <div class="flex gap-4 brightness-100">
-                    <button id="piedraUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
-                        Piedra
-                    </button>
-                    <button id="papelUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
-                        Papel
-                    </button>
-                    <button id="tijerasUser" class="cursor-pointer bg-gray-300 text-gray-800 px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition">
-                        Tijeras
-                    </button>
+            <div class="flex flex-col md:flex-row justify-around items-center overflow-hidden gap-4 md:gap-8 w-full bg-cover bg-center p-4 md:p-8 rounded-lg shadow-lg">
+                <!-- Panel del Jugador -->
+                <div class="flex flex-col items-center bg-black/60 p-4 sm:p-6 rounded-lg border-2 border-yellow-500 shadow-lg w-full max-w-[400px]" id="valueUser">
+                    <p class="text-lg sm:text-2xl md:text-3xl font-bold text-yellow-400 tracking-widest drop-shadow-lg text-center">
+                        🍻 Turno del Jugador 🍻
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-4">
+                        <button id="piedraUser" class="cursor-pointer bg-gray-800 text-yellow-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-md hover:bg-yellow-500 hover:text-black transition transform hover:scale-105 border-2 border-yellow-300 w-1/3 sm:w-auto">
+                            <span>⛰️</span><span class="hidden sm:block">Piedra</span>
+                        </button>
+                        <button id="papelUser" class="cursor-pointer bg-gray-800 text-yellow-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-md hover:bg-yellow-500 hover:text-black transition transform hover:scale-105 border-2 border-yellow-300 w-1/3 sm:w-auto">
+                            <span>📜</span><span class="hidden sm:block">Papel</span>
+                        </button>
+                        <button id="tijerasUser" class="cursor-pointer bg-gray-800 text-yellow-300 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-md hover:bg-yellow-500 hover:text-black transition transform hover:scale-105 border-2 border-yellow-300 w-1/3 sm:w-auto">
+                            <span>✂️</span><span class="hidden sm:block">Tijeras</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            </div>
-            <p id="resultado" class="text-2xl font-semibold mt-8 hidden">Resultado</p>
+            
+            
+            <p id="resultado" class="text-2xl font-semibold mt-8 hidden brightness-100">Resultado</p>
             <button id="reiniciar" class="cursor-pointer bg-red-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-red-600 active:bg-red-700 transition mt-8 hidden">
                 Reiniciar
             </button>
