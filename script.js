@@ -8,6 +8,7 @@ const userValue = document.getElementById("userValue")
 const elementos = document.querySelectorAll("#piedraUser, #papelUser, #tijerasUser");
 const valueUser = document.getElementById("valueUser")
 const maquinaValue = document.getElementById("maquinaValue")
+const resultado = document.getElementById("resultado")
 let user;
 let maquina;
 let arrayButtons = [papel,tijeras,piedra]
@@ -21,34 +22,40 @@ elegirAleatorio = (array) =>{
     console.log(indice)
     return array[indice];
 }
+const juegoCompleto = () => {
+    piedra.addEventListener("click", () => {
+        const opciones = ["piedra", "papel", "tijeras"];
+        maquina = elegirAleatorio(opciones);
+        numeroAleatorio()
+        user = "piedra"
+        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        document.getElementById("reiniciar").classList.toggle("hidden");
+    })
+    papel.addEventListener("click", () => {
+        const opciones = ["piedra", "papel", "tijeras"];
+        maquina = elegirAleatorio(opciones);
+        numeroAleatorio()
+        user = "papel"
+        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        document.getElementById("reiniciar").classList.toggle("hidden");
+    })
+    tijeras.addEventListener("click", () => {
+        const opciones = ["piedra", "papel", "tijeras"];
+        maquina = elegirAleatorio(opciones);
+        numeroAleatorio()
+        user = "tijeras"
+        verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
+        document.getElementById("reiniciar").classList.remove("hidden");
+    })
+}
 iniciarJuego.addEventListener("click", () => {
     iniciarJuego.style.display = "none"
     juego.style.display = "flex"
+    juegoCompleto()
 })
 const eliminateElementValueUser = () =>{
     valueUser.style.display = "none"
 }
-piedra.addEventListener("click", () => {
-    const opciones = ["piedra", "papel", "tijeras"];
-    maquina = elegirAleatorio(opciones);
-    numeroAleatorio()
-    user = "piedra"
-    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
-})
-papel.addEventListener("click", () => {
-    const opciones = ["piedra", "papel", "tijeras"];
-    maquina = elegirAleatorio(opciones);
-    numeroAleatorio()
-    user = "papel"
-    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
-})
-tijeras.addEventListener("click", () => {
-    const opciones = ["piedra", "papel", "tijeras"];
-    maquina = elegirAleatorio(opciones);
-    numeroAleatorio()
-    user = "tijeras"
-    verificarImagenUser(),eliminateElementValueUser(),setTimeout(verificarImagenMaquina(),2000),verificarPuntaje()
-})
 
 const verificarImagenUser = () => {
     switch (user){
@@ -65,7 +72,6 @@ const verificarImagenUser = () => {
 
 }
 const verificarImagenMaquina = () => {
-    
     switch (maquina){
         case "piedra":
             maquinaValue.setAttribute("src","static/piedra.png")
@@ -81,26 +87,26 @@ const verificarImagenMaquina = () => {
 }
 const verificarPuntaje = () => {
     if (maquina == user){
-        console.log("Empate")
+        document.getElementById("tieMessage").classList.toggle("hidden")
     }
     else{
         if(maquina == "piedra" & user == "tijeras"){
-            console.log("Gano la máquina")
+            document.getElementById("loseMessage").classList.toggle("hidden")
         }
         else if(maquina == "papel" & user == "piedra"){
-            console.log("Gano la máquina")
+            document.getElementById("loseMessage").classList.toggle("hidden")
         }
         else if(maquina == "tijeras" & user == "papel"){
-            console.log("Gano la máquina")
+            document.getElementById("loseMessage").classList.toggle("hidden")
         }
         else if(maquina == "piedra" & user == "papel"){
-            console.log("Gano el usuario")
+            document.getElementById("winMessage").classList.toggle("hidden")
         }
         else if(maquina == "papel" & user == "tijeras"){
-            console.log("Gano el usuario")
+            document.getElementById("winMessage").classList.toggle("hidden")
         }
         else if(maquina == "tijeras" & user == "piedra"){
-            console.log("Gano el usuario")
+            document.getElementById("winMessage").classList.toggle("hidden")
         }
     }
 }
@@ -108,3 +114,19 @@ const verificarPuntaje = () => {
 document.getElementById("menu-btn").addEventListener("click", () => {
     document.getElementById("mobile-menu").classList.toggle("hidden");
 });
+
+document.getElementById("reiniciar").addEventListener("click", () => {
+    iniciarJuego.style.display = "flex"
+    juego.style.display = "none"
+    juegoCompleto()
+});
+
+document.getElementById('reiniciar').addEventListener('click', function(){
+    maquinaValue.setAttribute("src","")
+    userValue.setAttribute("src","")
+    document.getElementById("tieMessage").classList.add("hidden")
+    document.getElementById("loseMessage").classList.add("hidden")
+    document.getElementById("winMessage").classList.add("hidden")
+    document.getElementById('reiniciar').classList.add("hidden")
+    valueUser.style.display = "flex"
+})

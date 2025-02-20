@@ -89,8 +89,37 @@
                 </div>
             </div>
             
-            
-            <p id="resultado" class="text-2xl font-semibold mt-8 hidden brightness-100">Resultado</p>
+            <!-- Contenedor de resultados -->
+    <div id="resultadoJuego" class="flex flex-col items-center justify-center mt-6">
+        
+        <!-- Mensaje de Victoria -->
+        <div id="winMessage" class="hidden bg-green-700 text-yellow-300 p-6 rounded-lg border-4 border-yellow-500 text-2xl font-bold tracking-widest shadow-xl animate-fade-in-scale">
+            🎉 ¡Ganaste! 🍻 <br> ¡Festeja con una ronda!
+        </div>
+
+        <!-- Mensaje de Derrota -->
+        <div id="loseMessage" class="hidden bg-red-700 text-yellow-300 p-6 rounded-lg border-4 border-yellow-500 text-2xl font-bold tracking-widest shadow-xl animate-fade-in-scale">
+            💀 ¡Perdiste! 🍺 <br> ¡Tiempo de revancha!
+        </div>
+
+        <!-- Mensaje de Empate -->
+        <div id="tieMessage" class="hidden bg-gray-700 text-yellow-300 p-6 rounded-lg border-4 border-yellow-500 text-2xl font-bold tracking-widest shadow-xl animate-fade-in-scale">
+            🤝 ¡Empate! 🍻 <br> ¡Otra ronda!
+        </div>
+    </div>
+
+    <!-- Animaciones de entrada -->
+    <style>
+        @keyframes fade-in-scale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in-scale {
+            animation: fade-in-scale 0.5s ease-out;
+        }
+    </style>
+
+            <p id="resultado" class="text-2xl font-semibold mt-8"></p>
             <button id="reiniciar" class="cursor-pointer bg-red-500 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-md hover:bg-red-600 active:bg-red-700 transition mt-8 hidden">
                 Reiniciar
             </button>
